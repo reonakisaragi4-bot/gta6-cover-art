@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sol Marina Cover Maker — GTA-style cover art, offline</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Sol Marina <span>Cover Maker</span></h1>
+  <p class="tagline">Turn any photo into a multi-panel poster cover. Photos never leave your machine.</p>
+</header>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h2>1 · Photos</h2>
+    <label class="fileLabel">Upload your photos
+      <input id="upload" type="file" accept="image/*" multiple>
+    </label>
+    <div class="row">
+      <button id="loadBoth" type="button">Load both samples</button>
+      <button id="loadBoulevard" type="button">Boulevard</button>
+      <button id="loadPier" type="button">Pier</button>
+    </div>
+    <div id="photoChips" class="chips" aria-label="Loaded photos"></div>
+    <div class="row">
+      <button id="fillSingle" type="button" class="opt active">One photo, all panels</button>
+      <button id="fillMulti" type="button" class="opt">Different photo per panel</button>
+    </div>
+
+    <h2>2 · Layout</h2>
+    <div id="layoutBtns" class="row wrap"></div>
+    <p class="hint">Click the preview to select the next panel. Drag the preview to pan it.</p>
+    <div id="panelList" class="panelList"></div>
+    <label><span id="panelLabel">Panel 1 photo</span>
+      <select id="panelPhoto"></select>
+    </label>
+    <label>Zoom <span id="zoomVal">1.0×</span>
+      <input id="zoom" type="range" min="1" max="2.5" step="0.1" value="1">
+    </label>
+    <button id="resetCrop" type="button">Reset selected panel crop</button>
+
+    <h2>3 · Caption</h2>
+    <label>Main title
+      <input id="title" type="text" maxlength="24" value="SOL MARINA">
+    </label>
+    <label>Subtitle
+      <input id="subtitle" type="text" maxlength="40" value="NEON BAY NIGHTS">
+    </label>
+    <label>Title size <span id="titleSizeVal">100%</span>
+      <input id="titleSize" type="range" min="0.6" max="1.4" step="0.05" value="1">
+    </label>
+    <label>Title colour
+      <input id="titleColor" type="color" value="#ffffff">
+    </label>
+    <label class="check"><input id="outline" type="checkbox" checked> Dark outline</label>
+    <label>Slant <span id="slantVal">8°</span>
+      <input id="slant" type="range" min="0" max="16" step="1" value="8">
+    </label>
+
+    <h2>4 · Colour grade</h2>
+    <div id="gradeBtns" class="row wrap"></div>
+
+    <h2>5 · Export PNG</h2>
+    <div id="sizeBtns" class="row wrap"></div>
+    <button id="exportBtn" type="button" class="primary">Export PNG</button>
+    <p id="status" role="status">Load a photo to start.</p>
+  </section>
+  <section class="stage" aria-label="Live preview">
+    <canvas id="preview" width="1080" height="1350" aria-label="Live cover preview"></canvas>
+    <p class="hint">Live preview — what you see is what the PNG gets. Original art only: no game logos, artwork or fonts.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
